@@ -1,0 +1,4 @@
+#!/bin/bash
+# twitter
+
+java -jar twittercli.jar $*
