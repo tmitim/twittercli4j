@@ -16,21 +16,22 @@ import twitter4j.TwitterFactory;
 @Command(name = "timeline", description = "Get your timeline")
 public class TimeLine implements Runnable {
 
-    public void run() {
-        Twitter twitter = TwitterFactory.getSingleton();
+	public void run() {
 
-        List<Status> statuses = new ArrayList<>();
+		System.out.println("Pulling your timeline.");
+		Twitter twitter = TwitterFactory.getSingleton();
+
+		List<Status> statuses = new ArrayList<>();
 		try {
 			statuses = twitter.getHomeTimeline();
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
-        System.out.println("Showing your timeline.");
-        for (Status status : statuses) {
-            System.out.println(status.getUser().getName() + " (@" + status.getUser().getScreenName() + "): ");
-            System.out.println(status.getText());
-            System.out.println(status.getCreatedAt());
-            System.out.println("");
-        }
-    }
+		for (Status status : statuses) {
+			System.out.println(status.getUser().getName() + " (@" + status.getUser().getScreenName() + "): ");
+			System.out.println(status.getText());
+			System.out.println(status.getCreatedAt());
+			System.out.println("");
+		}
+	}
 }

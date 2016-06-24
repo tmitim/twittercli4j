@@ -21,31 +21,32 @@ import twitter4j.TwitterFactory;
 @Command(name = "tweet", description = "Tweet your thoughts")
 public class Tweet implements Runnable {
 
-    @Option(name = { "-f", "--flag" }, description = "An option that requires no values")
-    private boolean flag = false;
+	@Option(name = { "-f", "--flag" }, description = "An option that requires no values")
+	private boolean flag = false;
 
-    @Arguments(description = "Additional arguments")
-    private List<String> args;
+	@Arguments(description = "Additional arguments")
+	private List<String> args;
 
-    public static void main(String[] args) {
-        SingleCommand<Tweet> parser = SingleCommand.singleCommand(Tweet.class);
-        Tweet cmd = parser.parse(args);
-        cmd.run();
-    }
+	public static void main(String[] args) {
+		SingleCommand<Tweet> parser = SingleCommand.singleCommand(Tweet.class);
+		Tweet cmd = parser.parse(args);
+		cmd.run();
+	}
 
-    public void run() {
-        Twitter twitter = TwitterFactory.getSingleton();
+	public void run() {
+		Twitter twitter = TwitterFactory.getSingleton();
 
 		try {
-			Status status = twitter.updateStatus(args.get(0));
-	        System.out.println("Successfully updated the status to [" + status.getText() + "].");
+			Status status = twitter.updateStatus(StringUtils.join(args, " "));
+			System.out.println("Successfully updated the status to [" + status.getText() + "].");
 
 		} catch (TwitterException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        System.out.println("Flag was " + (this.flag ? "set" : "not set"));
-        if (args != null)
-            System.out.println("Arguments were " + StringUtils.join(args, ","));
-    }
+
+		System.out.println("Flag was " + (this.flag ? "set" : "not set"));
+		if (args != null)
+			System.out.println("Arguments were " + StringUtils.join(args, " "));
+	}
 }
