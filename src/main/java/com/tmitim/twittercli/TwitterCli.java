@@ -7,7 +7,7 @@ import com.github.rvesse.airline.help.Help;
 		name = "twitter",
 		description = "Provides a basic example CLI",
 		defaultCommand = Help.class,
-		commands = { Tweet.class, TimeLine.class, Help.class }
+		commands = { Tweet.class, TimeLine.class, Location.class, Help.class }
 	)
 public class TwitterCli {
 	public static void main(String[] args) {
