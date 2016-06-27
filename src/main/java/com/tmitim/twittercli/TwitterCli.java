@@ -3,6 +3,9 @@ package com.tmitim.twittercli;
 import com.github.rvesse.airline.annotations.Cli;
 import com.github.rvesse.airline.help.Help;
 import com.tmitim.twittercli.commands.Location;
+import com.tmitim.twittercli.commands.TimeLine;
+import com.tmitim.twittercli.commands.Trend;
+import com.tmitim.twittercli.commands.Tweet;
 
 @Cli(
 		name = "twitter",

@@ -1,4 +1,4 @@
-package com.tmitim.twittercli;
+package com.tmitim.twittercli.commands;
 
 import com.github.rvesse.airline.annotations.Command;
 import com.github.rvesse.airline.annotations.Option;

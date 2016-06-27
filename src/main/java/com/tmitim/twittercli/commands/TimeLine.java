@@ -1,4 +1,4 @@
-package com.tmitim.twittercli;
+package com.tmitim.twittercli.commands;
 
 import java.util.ArrayList;
 import java.util.Collections;
