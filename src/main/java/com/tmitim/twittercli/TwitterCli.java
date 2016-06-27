@@ -8,7 +8,7 @@ import com.tmitim.twittercli.commands.Location;
 		name = "twitter",
 		description = "Provides a basic example CLI",
 		defaultCommand = Help.class,
-		commands = { Tweet.class, TimeLine.class, Location.class, Help.class }
+		commands = { Tweet.class, TimeLine.class, Location.class, Trend.class, Help.class }
 	)
 public class TwitterCli {
 	public static void main(String[] args) {
