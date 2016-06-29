@@ -3,6 +3,7 @@ package com.tmitim.twittercli;
 import java.util.List;
 
 import twitter4j.Status;
+import twitter4j.Location;
 
 public class Printer {
 
@@ -19,6 +20,16 @@ public class Printer {
 		System.out.println(String.format("ID: %d, RT: %d, <3: %d", status.getId(), status.getRetweetCount(),
 				status.getFavoriteCount()));
 		System.out.println("");
+		System.out.println("");
 	}
 
+	public void printAvailableLocations(List<Location> locations) {
+		for (twitter4j.Location l : locations) {
+			printLocation(l);
+		}
+	}
+
+	public void printLocation(Location location) {
+		System.out.println(location.getName() + ": " + location.getWoeid());
+	}
 }

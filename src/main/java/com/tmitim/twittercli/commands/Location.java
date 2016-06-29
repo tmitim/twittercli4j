@@ -2,6 +2,7 @@ package com.tmitim.twittercli.commands;
 
 import com.github.rvesse.airline.annotations.Command;
 import com.github.rvesse.airline.annotations.Option;
+import com.tmitim.twittercli.Printer;
 import com.tmitim.twittercli.defaults.DefaultLocation;
 
 import twitter4j.Twitter;
@@ -24,7 +25,7 @@ public class Location implements Runnable {
 			Twitter twitter = TwitterFactory.getSingleton();
 
 			if (isListLocations) {
-				printAvailableLocations(twitter);
+				new Printer().printAvailableLocations(twitter.getAvailableTrends());
 			}
 		} catch (TwitterException e) {
 			System.out.println(e.getErrorMessage());
@@ -33,18 +34,8 @@ public class Location implements Runnable {
 		printDefaultLocation();
 	}
 
-	private void printAvailableLocations(Twitter twitter) throws TwitterException {
-		for (twitter4j.Location l :twitter.getAvailableTrends()){
-			printLocation(l);
-		}
-	}
-
-	private void printLocation(twitter4j.Location location) {
-		System.out.println(location.getName() + ": " + location.getWoeid());
-	}
-
 	private void printDefaultLocation() {
 		System.out.println("Default Location is:");
-		printLocation(new DefaultLocation());
+		new Printer().printLocation(new DefaultLocation());
 	}
 }
