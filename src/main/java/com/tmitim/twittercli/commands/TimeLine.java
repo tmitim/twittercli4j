@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.github.rvesse.airline.annotations.Command;
 import com.github.rvesse.airline.annotations.Option;
+import com.tmitim.twittercli.Printer;
 
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -39,19 +40,6 @@ public class TimeLine implements Runnable {
 		}
 
 		Collections.reverse(statuses);
-		for (Status status : statuses) {
-			System.out.println(status.getUser().getName() + " (@" + status.getUser().getScreenName() + "): ");
-			System.out.println(status.getText());
-			System.out.println(status.getCreatedAt());
-			System.out.println(
-				String.format(
-					"ID: %d, RT: %d, <3: %d",
-					status.getId(),
-					status.getRetweetCount(),
-					status.getFavoriteCount()
-				)
-			);
-			System.out.println("");
-		}
+		new Printer().printStatuses(statuses);
 	}
 }
