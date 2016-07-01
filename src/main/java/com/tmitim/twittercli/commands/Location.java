@@ -2,6 +2,7 @@ package com.tmitim.twittercli.commands;
 
 import com.github.rvesse.airline.annotations.Command;
 import com.github.rvesse.airline.annotations.Option;
+import com.tmitim.twittercli.Locator;
 import com.tmitim.twittercli.Printer;
 import com.tmitim.twittercli.defaults.DefaultLocation;
 
@@ -18,6 +19,9 @@ public class Location implements Runnable {
 	@Option(name = { "-l", "--list" }, description = "get a list of all twitter locations with WOEID")
 	private boolean isListLocations;
 
+	@Option(name = { "-s", "--search" }, description = "search for specific location's with WOEID")
+	private String locationQuery;
+
 	@Override
 	public void run() {
 
@@ -26,6 +30,13 @@ public class Location implements Runnable {
 
 			if (isListLocations) {
 				new Printer().printAvailableLocations(twitter.getAvailableTrends());
+			}
+
+			if (locationQuery != null && !locationQuery.isEmpty()) {
+				twitter4j.Location closestLocation = new Locator().findBestLocation(locationQuery,
+						twitter.getAvailableTrends());
+
+				new Printer().printLocation(closestLocation);
 			}
 		} catch (TwitterException e) {
 			System.out.println(e.getErrorMessage());
