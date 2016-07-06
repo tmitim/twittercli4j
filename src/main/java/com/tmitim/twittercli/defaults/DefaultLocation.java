@@ -1,5 +1,6 @@
 package com.tmitim.twittercli.defaults;
 
+@SuppressWarnings("serial")
 public class DefaultLocation implements twitter4j.Location {
 
 	private static final String DEFAULT_LOCATION = "Los Angeles";
