@@ -3,6 +3,7 @@ package com.tmitim.twittercli;
 import java.util.List;
 
 import twitter4j.Status;
+import twitter4j.DirectMessage;
 import twitter4j.Location;
 
 public class Printer {
@@ -31,5 +32,19 @@ public class Printer {
 
 	public void printLocation(Location location) {
 		System.out.println(location.getName() + ": " + location.getWoeid());
+	}
+
+	public void printDirectMessages(List<DirectMessage> messages, String username) {
+		for (DirectMessage dm : messages) {
+			printDirectMessage(dm, username);
+		}
+	}
+
+	public void printDirectMessage(DirectMessage dm, String username) {
+		if (username.equals(dm.getSenderScreenName())) {
+			System.out.println(">> " + dm.getRecipientScreenName() + ": " + dm.getText());
+		} else {
+			System.out.println("<< " + dm.getSenderScreenName() + ": " + dm.getText());
+		}
 	}
 }
