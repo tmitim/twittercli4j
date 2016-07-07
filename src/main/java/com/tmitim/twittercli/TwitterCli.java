@@ -2,6 +2,7 @@ package com.tmitim.twittercli;
 
 import com.github.rvesse.airline.annotations.Cli;
 import com.github.rvesse.airline.help.Help;
+import com.github.rvesse.airline.parser.errors.ParseArgumentsUnexpectedException;
 import com.tmitim.twittercli.commands.DirectMessage;
 import com.tmitim.twittercli.commands.Location;
 import com.tmitim.twittercli.commands.TimeLine;
@@ -20,7 +21,11 @@ public class TwitterCli {
 	public static void main(String[] args) {
 
 		com.github.rvesse.airline.Cli<Runnable> cli = new com.github.rvesse.airline.Cli<>(TwitterCli.class);
-		Runnable cmd = cli.parse(args);
-		cmd.run();
+		try {
+			Runnable cmd = cli.parse(args);
+			cmd.run();
+		} catch (ParseArgumentsUnexpectedException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }
