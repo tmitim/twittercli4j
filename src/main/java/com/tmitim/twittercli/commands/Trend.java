@@ -1,7 +1,13 @@
 package com.tmitim.twittercli.commands;
 
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+
+import com.github.rvesse.airline.annotations.Arguments;
 import com.github.rvesse.airline.annotations.Command;
 import com.github.rvesse.airline.annotations.Option;
+import com.tmitim.twittercli.Locator;
 import com.tmitim.twittercli.defaults.DefaultLocation;
 
 import twitter4j.Trends;
@@ -12,11 +18,14 @@ import twitter4j.TwitterFactory;
 /**
  * Get timeline
  */
-@Command(name = "trend", description = "Get what's trending")
+@Command(name = "trends", description = "Get what's trending")
 public class Trend implements Runnable {
 
 	@Option(name = { "-w", "--woied" }, description = "get a specific woeid's trends")
 	private int woeid;
+
+	@Arguments(description = "find trends for a specific location")
+	private List<String> args;
 
 	@Override
 	public void run() {
@@ -29,6 +38,12 @@ public class Trend implements Runnable {
 
 		try {
 			Twitter twitter = TwitterFactory.getSingleton();
+
+			if (args != null && !args.isEmpty()) {
+				woeid = new Locator().findBestLocation(StringUtils.join(args, " "), twitter.getAvailableTrends())
+						.getWoeid();
+			}
+
 			Trends trends = twitter.getPlaceTrends(woeid);
 			for (twitter4j.Trend t : trends.getTrends()) {
 				System.out.println(t.getName());
