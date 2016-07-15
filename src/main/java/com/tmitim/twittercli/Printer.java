@@ -12,6 +12,10 @@ public class Printer {
 		for (Status status : statuses) {
 			printStatus(status);
 		}
+
+		if (statuses.isEmpty()) {
+			System.out.println("No tweets found");
+		}
 	}
 
 	public void printStatus(Status status) {
