@@ -5,7 +5,7 @@ import com.github.rvesse.airline.help.Help;
 import com.github.rvesse.airline.parser.errors.ParseArgumentsUnexpectedException;
 import com.tmitim.twittercli.commands.DirectMessage;
 import com.tmitim.twittercli.commands.Location;
-import com.tmitim.twittercli.commands.TimeLine;
+import com.tmitim.twittercli.commands.TimeLineCommand;
 import com.tmitim.twittercli.commands.Trend;
 import com.tmitim.twittercli.commands.Tweet;
 import com.tmitim.twittercli.commands.Search;
@@ -14,7 +14,7 @@ import com.tmitim.twittercli.commands.Search;
 		name = "twitter",
 		description = "Provides a basic example CLI",
 		defaultCommand = Help.class,
-		commands = { Tweet.class, TimeLine.class, Location.class, Trend.class, Search.class, DirectMessage.class,
+		commands = { Tweet.class, TimeLineCommand.class, Location.class, Trend.class, Search.class, DirectMessage.class,
 				Help.class }
 	)
 public class TwitterCli {

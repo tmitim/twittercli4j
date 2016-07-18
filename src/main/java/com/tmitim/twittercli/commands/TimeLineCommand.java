@@ -3,13 +3,15 @@ package com.tmitim.twittercli.commands;
 import com.github.rvesse.airline.annotations.Command;
 import com.github.rvesse.airline.annotations.Option;
 import com.tmitim.twittercli.TimeLiner;
+import com.tmitim.twittercli.pojos.TimeLine;
+
 import twitter4j.TwitterFactory;
 
 /**
  * Get timeline
  */
 @Command(name = "timeline", description = "Get your timeline")
-public class TimeLine implements Runnable {
+public class TimeLineCommand implements Runnable {
 
 	@Option(name = { "-u", "--user" }, description = "get the timeline for a specific username")
 	private String username;
@@ -23,10 +25,10 @@ public class TimeLine implements Runnable {
 	@Override
 	public void run() {
 
-		TimeLiner tl = new TimeLiner(TwitterFactory.getSingleton())
-				.setNewStatuses(newStatuses).setUsername(username);
+		TimeLiner tl = new TimeLiner(
+				new TimeLine(TwitterFactory.getSingleton()).setNewStatuses(newStatuses).setUsername(username));
 
-		tl.getStatuses();
+		tl.pullStatuses();
 
 		if (username == null) {
 			tl.updateLastCheck();
