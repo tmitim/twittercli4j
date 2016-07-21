@@ -2,8 +2,8 @@ package com.tmitim.twittercli;
 
 import com.github.rvesse.airline.annotations.Cli;
 import com.github.rvesse.airline.help.Help;
-import com.github.rvesse.airline.parser.errors.ParseArgumentsUnexpectedException;
 import com.tmitim.twittercli.commands.DirectMessage;
+import com.tmitim.twittercli.commands.Favorite;
 import com.tmitim.twittercli.commands.Location;
 import com.tmitim.twittercli.commands.TimeLineCommand;
 import com.tmitim.twittercli.commands.Trend;
@@ -15,7 +15,7 @@ import com.tmitim.twittercli.commands.Search;
 		description = "Provides a basic example CLI",
 		defaultCommand = Help.class,
 		commands = { Tweet.class, TimeLineCommand.class, Location.class, Trend.class, Search.class, DirectMessage.class,
-				Help.class }
+				Favorite.class, Help.class }
 	)
 public class TwitterCli {
 	public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class TwitterCli {
 		try {
 			Runnable cmd = cli.parse(args);
 			cmd.run();
-		} catch (ParseArgumentsUnexpectedException e) {
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
