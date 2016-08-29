@@ -14,13 +14,13 @@ import twitter4j.Twitter;
 public class TimeLine {
 	Twitter twitter;
 	String username;
-	boolean newStatuses;
+	boolean allStatuses;
 	List<Status> statuses;
 
 	public TimeLine(Twitter twitter) {
 		this.twitter = twitter;
 		this.username = "";
-		this.newStatuses = false;
+		this.allStatuses = false;
 		this.statuses = new ArrayList<>();
 	}
 
@@ -33,8 +33,8 @@ public class TimeLine {
 		return this;
 	}
 
-	public TimeLine setNewStatuses(boolean newStatuses) {
-		this.newStatuses = newStatuses;
+	public TimeLine setAllStatuses(boolean allStatuses) {
+		this.allStatuses = allStatuses;
 		return this;
 	}
 
@@ -42,8 +42,8 @@ public class TimeLine {
 		return username;
 	}
 
-	public boolean getNewStatuses() {
-		return newStatuses;
+	public boolean getAllStatuses() {
+		return allStatuses;
 	}
 
 	public Twitter getTwitter() {

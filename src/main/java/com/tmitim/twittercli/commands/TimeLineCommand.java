@@ -16,8 +16,8 @@ public class TimeLineCommand implements Runnable {
 	@Option(name = { "-u", "--user" }, description = "get the timeline for a specific username")
 	private String username;
 
-	@Option(name = { "-n", "--new" }, description = "get only new tweets")
-	private boolean newStatuses;
+	@Option(name = { "-a", "--all" }, description = "get all tweets (defaults is only new tweets)")
+	private boolean allStatuses;
 
 	@Option(name = { "-c", "--clear" }, description = "clear last checked time")
 	private boolean clearLast;
@@ -26,7 +26,7 @@ public class TimeLineCommand implements Runnable {
 	public void run() {
 
 		TimeLiner tl = new TimeLiner(
-				new TimeLine(TwitterFactory.getSingleton()).setNewStatuses(newStatuses).setUsername(username));
+				new TimeLine(TwitterFactory.getSingleton()).setAllStatuses(allStatuses).setUsername(username));
 
 		tl.pullStatuses();
 

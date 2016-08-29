@@ -24,7 +24,7 @@ public class TimeLiner {
 				pullUserTimeline();
 			} else {
 				pullMyTimeline();
-				if (timeline.getNewStatuses()) {
+				if (!timeline.getAllStatuses()) {
 					useOnlyNewStatuses();
 				}
 			}
