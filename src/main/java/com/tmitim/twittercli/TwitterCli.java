@@ -12,8 +12,7 @@ import com.tmitim.twittercli.commands.Search;
 
 @Cli(
 		name = "twitter",
-		description = "Provides a basic example CLI",
-		defaultCommand = Help.class,
+		description = "Twitter CLI", defaultCommand = TimeLineCommand.class,
 		commands = { Tweet.class, TimeLineCommand.class, Location.class, Trend.class, Search.class, DirectMessage.class,
 				Favorite.class, Help.class }
 	)
