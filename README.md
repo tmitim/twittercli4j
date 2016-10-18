@@ -2,10 +2,24 @@
 Twitter command line tool written in Java.
 
 ### Current Commands
-- timeline
-- search
-- trend
-- tweet
+```
+➜  ~ twitter help
+usage: twitter <command> [ <args> ]
+
+Commands are:
+    dm         DirectMessages
+    favorite   Favorite a tweet (tweetId)
+    help       Display help information
+    location   get twitter location information
+    search     Search twitter
+    timeline   Get your timeline
+    trends     Get what's trending
+    tweet      Tweet your thoughts
+
+See 'twitter help <command>' for more information on a specific command.
+```
+
+The default command is `timeline`
 
 ### Installation
 
@@ -41,7 +55,7 @@ Tue Jul 05 19:35:52 PDT 2016
 ID: 750518600574775297, RT: 496, <3: 874
 ...
 
-➜  ~ twitter trend 
+➜  ~ twitter trends
 Pulling trends...
 #AltonSterling
 #NationalKissingDay
@@ -50,8 +64,6 @@ Pulling trends...
 ...
 
 ```
-
-
 
 
 ### Thanks
