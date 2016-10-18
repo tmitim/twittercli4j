@@ -1,9 +1,9 @@
 package com.tmitim.twittercli;
 
 import com.github.rvesse.airline.annotations.Cli;
-import com.github.rvesse.airline.help.Help;
 import com.tmitim.twittercli.commands.DirectMessage;
 import com.tmitim.twittercli.commands.Favorite;
+import com.tmitim.twittercli.commands.Help;
 import com.tmitim.twittercli.commands.Location;
 import com.tmitim.twittercli.commands.TimeLineCommand;
 import com.tmitim.twittercli.commands.Trend;
