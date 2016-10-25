@@ -17,3 +17,6 @@ hs_err_pid*
 .project
 .classpath
 /target/
+
+# vscode editor
+.vscode/
