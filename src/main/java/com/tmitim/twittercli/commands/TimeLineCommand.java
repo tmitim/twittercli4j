@@ -19,7 +19,7 @@ public class TimeLineCommand implements Runnable {
 	@Option(name = { "-a", "--all" }, description = "get all tweets (defaults is only new tweets)")
 	private boolean allStatuses;
 
-	@Option(name = { "-c", "--clear" }, description = "clear last checked time")
+	@Option(name = { "-c", "--clear" }, description = "clear last checked time before pulling timeline")
 	private boolean clearLast;
 
 	@Override
@@ -28,14 +28,14 @@ public class TimeLineCommand implements Runnable {
 		TimeLiner tl = new TimeLiner(
 				new TimeLine(TwitterFactory.getSingleton()).setAllStatuses(allStatuses).setUsername(username));
 
+		if (clearLast) {
+			tl.clearLastCheck();
+		}
+
 		tl.pullStatuses();
 
 		if (username == null) {
 			tl.updateLastCheck();
-		}
-
-		if (clearLast) {
-			tl.clearLastCheck();
 		}
 
 		tl.printStatuses();
