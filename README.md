@@ -52,11 +52,11 @@ If using `twitter4j.properties` doesn't work (maybe using the maven build), conf
 
 java \
 	-Dtwitter4j.debug=false \
-	-Dtwitter4j.oauth.consumerKey==********************* \
-	-Dtwitter4j.oauth.consumerSecret==********************* \
-	-Dtwitter4j.oauth.accessToken==********************* \
-	-Dtwitter4j.oauth.accessTokenSecret==********************* \
-	-jar twittercli.jar $*
+	-Dtwitter4j.oauth.consumerKey=********************* \
+	-Dtwitter4j.oauth.consumerSecret=********************* \
+	-Dtwitter4j.oauth.accessToken=********************* \
+	-Dtwitter4j.oauth.accessTokenSecret=********************* \
+    -jar (path to command)/twittercli.jar $*
 
 ```
 
