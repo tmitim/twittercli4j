@@ -1,7 +1,6 @@
 package com.tmitim.twittercli.commands;
 
 import java.util.List;
-
 import org.apache.commons.lang3.StringUtils;
 
 import com.github.rvesse.airline.SingleCommand;
@@ -33,8 +32,16 @@ public class Tweet implements Runnable {
 		Twitter twitter = TwitterFactory.getSingleton();
 
 		try {
-			Status status = twitter.updateStatus(StringUtils.join(args, " "));
-			System.out.println("Successfully updated the status to [" + status.getText() + "].");
+			String tweet = StringUtils.join(args, " ");
+
+			if (tweet.length() <= 140) {
+				Status status = twitter.updateStatus(tweet);
+				System.out.println("Successfully updated the status to [" + status.getText() + "].");
+
+			} else {
+				System.out.println("Tweet counter: " + tweet.length());
+				System.out.println("Tweet exceeds character limit by " + (tweet.length() - 140) + " characters");
+			}
 
 		} catch (TwitterException e) {
 			e.printStackTrace();
