@@ -34,12 +34,12 @@ public class Tweet implements Runnable {
 		try {
 			String tweet = StringUtils.join(args, " ");
 
+			System.out.println("Tweet counter: " + tweet.length());
 			if (tweet.length() <= 140) {
 				Status status = twitter.updateStatus(tweet);
 				System.out.println("Successfully updated the status to [" + status.getText() + "].");
 
 			} else {
-				System.out.println("Tweet counter: " + tweet.length());
 				System.out.println("Tweet exceeds character limit by " + (tweet.length() - 140) + " characters");
 			}
 
