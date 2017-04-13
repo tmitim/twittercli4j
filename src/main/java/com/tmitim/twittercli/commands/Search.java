@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import com.github.rvesse.airline.annotations.Arguments;
 import com.github.rvesse.airline.annotations.Command;
 import com.github.rvesse.airline.annotations.Option;
-import com.tmitim.twittercli.Printer;
+import com.tmitim.twittercli.PrinterFactory;
 
 import twitter4j.Query;
 import twitter4j.Status;
@@ -72,6 +72,6 @@ public class Search implements Runnable {
 		}
 
 		Collections.reverse(statuses);
-		new Printer().printStatuses(statuses);
+		PrinterFactory.getPrinter().printStatuses(statuses);
 	}
 }

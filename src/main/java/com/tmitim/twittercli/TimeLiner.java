@@ -47,7 +47,7 @@ public class TimeLiner {
 
 	public void printStatuses() {
 		Collections.reverse(timeline.getStatuses());
-		new Printer().printStatuses(timeline.getStatuses());
+		PrinterFactory.getPrinter().printStatuses(timeline.getStatuses());
 	}
 
 	private void pullMyTimeline() throws TwitterException {

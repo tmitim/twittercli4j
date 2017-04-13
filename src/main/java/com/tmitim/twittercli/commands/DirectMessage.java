@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.github.rvesse.airline.annotations.Arguments;
 import com.github.rvesse.airline.annotations.Command;
-import com.tmitim.twittercli.Printer;
+import com.tmitim.twittercli.PrinterFactory;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -34,7 +34,7 @@ public class DirectMessage implements Runnable {
 				List<twitter4j.DirectMessage> messages = twitter.getDirectMessages();
 				messages.addAll(twitter.getSentDirectMessages());
 				Collections.sort(messages, getCreatedDate());
-				new Printer().printDirectMessages(messages, twitter.getScreenName());
+				PrinterFactory.getPrinter().printDirectMessages(messages, twitter.getScreenName());
 			} else if (args.size() > 1) {
 				String message = StringUtils.join(args.toArray(), " ", 1, args.size());
 				twitter.sendDirectMessage(args.get(0), message);

@@ -3,7 +3,7 @@ package com.tmitim.twittercli.commands;
 import com.github.rvesse.airline.annotations.Command;
 import com.github.rvesse.airline.annotations.Option;
 import com.tmitim.twittercli.Locator;
-import com.tmitim.twittercli.Printer;
+import com.tmitim.twittercli.PrinterFactory;
 import com.tmitim.twittercli.defaults.DefaultLocation;
 
 import twitter4j.Twitter;
@@ -29,14 +29,14 @@ public class Location implements Runnable {
 			Twitter twitter = TwitterFactory.getSingleton();
 
 			if (isListLocations) {
-				new Printer().printAvailableLocations(twitter.getAvailableTrends());
+				PrinterFactory.getPrinter().printAvailableLocations(twitter.getAvailableTrends());
 			}
 
 			if (locationQuery != null && !locationQuery.isEmpty()) {
 				twitter4j.Location closestLocation = new Locator().findBestLocation(locationQuery,
 						twitter.getAvailableTrends());
 
-				new Printer().printLocation(closestLocation);
+				PrinterFactory.getPrinter().printLocation(closestLocation);
 			}
 		} catch (TwitterException e) {
 			System.out.println(e.getErrorMessage());
@@ -47,6 +47,6 @@ public class Location implements Runnable {
 
 	private void printDefaultLocation() {
 		System.out.println("Default Location is:");
-		new Printer().printLocation(new DefaultLocation());
+		PrinterFactory.getPrinter().printLocation(new DefaultLocation());
 	}
 }

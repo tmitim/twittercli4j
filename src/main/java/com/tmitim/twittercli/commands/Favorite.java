@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.github.rvesse.airline.annotations.Command;
 import com.github.rvesse.airline.annotations.Option;
-import com.tmitim.twittercli.Printer;
+import com.tmitim.twittercli.PrinterFactory;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -42,9 +42,9 @@ public class Favorite implements Runnable {
 			} else if (unfavoriteId != 0) {
 				unfavorite();
 			} else if (listFlag) {
-				new Printer().printStatuses(reverseStatuses(twitter.getFavorites()));
+				PrinterFactory.getPrinter().printStatuses(reverseStatuses(twitter.getFavorites()));
 			} else if (favoriteUsername != null) {
-				new Printer().printStatuses(reverseStatuses(twitter.getFavorites(favoriteUsername)));
+				PrinterFactory.getPrinter().printStatuses(reverseStatuses(twitter.getFavorites(favoriteUsername)));
 			} else {
 				printInstructions();
 			}
@@ -56,13 +56,13 @@ public class Favorite implements Runnable {
 	private void favorite() throws TwitterException {
 		Status status = twitter.createFavorite(favoriteId);
 		System.out.println("Favorited this tweet");
-		new Printer().printStatus(status);
+		PrinterFactory.getPrinter().printStatus(status);
 	}
 
 	private void unfavorite() throws TwitterException {
 		Status status = twitter.destroyFavorite(unfavoriteId);
 		System.out.println("Unfavorited this tweet");
-		new Printer().printStatus(status);
+		PrinterFactory.getPrinter().printStatus(status);
 	}
 
 	private void printInstructions() {
