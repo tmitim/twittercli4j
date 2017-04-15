@@ -20,8 +20,6 @@ import twitter4j.TwitterFactory;
 @Command(name = "dm", description = "DirectMessages")
 public class DirectMessage implements Runnable {
 
-	Twitter twitter;
-
 	@Arguments(description = "Username + Message")
 	private List<String> args;
 
@@ -29,7 +27,7 @@ public class DirectMessage implements Runnable {
 	public void run() {
 
 		try {
-			twitter = TwitterFactory.getSingleton();
+			Twitter twitter = TwitterFactory.getSingleton();
 			if (args == null) {
 				List<twitter4j.DirectMessage> messages = twitter.getDirectMessages();
 				messages.addAll(twitter.getSentDirectMessages());
