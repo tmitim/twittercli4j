@@ -23,7 +23,7 @@ The default command is `timeline`
 
 ### Installation
 
-- Create a runnable jar using this repo
+- Create a runnable jar (mvn package)
 - Save it to somewhere that `$PATH` has access to
 - Copy `twitter4j-example.properties` to the same folder
  - rename the file `twitter4j.properties` 
