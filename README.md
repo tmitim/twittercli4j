@@ -9,6 +9,7 @@ usage: twitter <command> [ <args> ]
 Commands are:
     dm         DirectMessages
     favorite   Favorite a tweet (tweetId)
+    friends    Get your friends list
     help       Display help information
     location   get twitter location information
     search     Search twitter
