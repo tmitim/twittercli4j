@@ -87,3 +87,6 @@ Pulling trends...
 ### Thanks
 - [twitter4j](https://github.com/yusuke/twitter4j) - twitter library
 - [rvesse/airline](https://github.com/rvesse/airline) - git-like java structures base off [airlift/airline](https://github.com/airlift/airline)
+
+### Changelog
+0.1.2 - Version Flag, Friends List
