@@ -5,6 +5,7 @@ import java.util.stream.Stream;
 import com.github.rvesse.airline.annotations.Cli;
 import com.tmitim.twittercli.commands.DirectMessage;
 import com.tmitim.twittercli.commands.Favorite;
+import com.tmitim.twittercli.commands.Follower;
 import com.tmitim.twittercli.commands.Friend;
 import com.tmitim.twittercli.commands.Help;
 import com.tmitim.twittercli.commands.Location;
@@ -18,7 +19,7 @@ import com.tmitim.twittercli.commands.Search;
 		name = "twitter",
 		description = "Twitter CLI", defaultCommand = TimeLineCommand.class,
 		commands = { Tweet.class, TimeLineCommand.class, Location.class, Trend.class, Search.class, DirectMessage.class,
-				Friend.class,
+				Friend.class, Follower.class,
 				Favorite.class, Help.class }
 	)
 public class TwitterCli {
