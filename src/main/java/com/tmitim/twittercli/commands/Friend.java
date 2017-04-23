@@ -1,6 +1,7 @@
 package com.tmitim.twittercli.commands;
 
 import com.github.rvesse.airline.annotations.Command;
+import com.tmitim.twittercli.PrinterFactory;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -23,11 +24,7 @@ public class Friend implements Runnable {
 			PagableResponseList<User> friends;
 			do {
 				friends = twitter.getFriendsList(twitter.getScreenName(), cursor);
-				friends.forEach(x -> System.out.println(String.format(
-					"%s - %s",
-					x.getScreenName(),
-					x.getName())
-				));
+				PrinterFactory.getPrinter().printUsers(friends);
 				
 				cursor = friends.getNextCursor();
 			} while (friends.hasNext());

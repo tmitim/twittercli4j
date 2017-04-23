@@ -4,7 +4,9 @@ import java.util.List;
 
 import twitter4j.DirectMessage;
 import twitter4j.Location;
+import twitter4j.PagableResponseList;
 import twitter4j.Status;
+import twitter4j.User;
 
 public class SystemPrinter implements Printer{
 
@@ -49,5 +51,13 @@ public class SystemPrinter implements Printer{
 		} else {
 			System.out.println("<< " + dm.getSenderScreenName() + ": " + dm.getText());
 		}
+	}
+
+	public void printUsers(PagableResponseList<User> users) {
+		users.forEach(x -> System.out.println(String.format(
+			"%s - %s",
+			x.getScreenName(),
+			x.getName())
+		));		
 	}
 }
