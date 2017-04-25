@@ -9,6 +9,7 @@ usage: twitter <command> [ <args> ]
 Commands are:
     dm         DirectMessages
     favorite   Favorite a tweet (tweetId)
+    followers  Get your followers list
     friends    Get your friends list
     help       Display help information
     location   get twitter location information
@@ -89,4 +90,5 @@ Pulling trends...
 - [rvesse/airline](https://github.com/rvesse/airline) - git-like java structures base off [airlift/airline](https://github.com/airlift/airline)
 
 ### Changelog
+0.1.3 - Add Followers List
 0.1.2 - Version Flag, Friends List
